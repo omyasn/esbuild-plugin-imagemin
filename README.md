@@ -27,7 +27,7 @@ The plugin works with png, jpg, gif and svg.
 
 By default this plugin uses:
 
-- [imagemin-jpegtran](https://www.npmjs.com/package/imagemin-jpegtran)
+- [imagemin-mozjpeg](https://github.com/imagemin/imagemin-mozjpeg)
 - [imagemin-gifsicle](https://www.npmjs.com/package/imagemin-gifsicle)
 - [imagemin-pngquant](https://www.npmjs.com/package/imagemin-pngquant)
 - [imagemin-svgo](https://www.npmjs.com/package/imagemin-svgo)
@@ -37,13 +37,13 @@ By default this plugin uses:
 ```js
 interface ImageminPluginOptions {
   disableDefaultPlugins?: {
-    jpegtran?: boolean,
+    mozjpeg?: boolean,
     pngquant?: boolean,
     svgo?: boolean,
     gifsicle?: boolean,
   };
   defaultPluginsOptions?: {
-    jpegtran?: jpegtran.Options,
+    mozjpeg?: mozjpeg.Options,
     pngquant?: pngquant.Options,
     svgo?: svgo.Options,
     gifsicle?: gifsicle.Options,
@@ -62,7 +62,7 @@ esbuild.build({
   plugins: [
     imageminPlugin({
       disableDefaultPlugins: {
-        jpegtran: true,
+        mozjpeg: true,
         gifsicle: true,
       },
     }),
@@ -79,8 +79,8 @@ esbuild.build({
   plugins: [
     imageminPlugin({
       defaultPluginsOptions: {
-        jpegtran: {
-          progressive: true,
+        mozjpeg: {
+          quality: 50,
         },
       },
     }),

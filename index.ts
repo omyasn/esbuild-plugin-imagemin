@@ -1,9 +1,8 @@
 import { PluginBuild } from "esbuild";
-import jpegtran from "imagemin-jpegtran";
 import pngquant, { Options as pngquantOptions } from "imagemin-pngquant";
 import gifsicle from "imagemin-gifsicle";
 
-type DefaultPluginName = "jpegtran" | "pngquant" | "svgo" | "gifsicle";
+type DefaultPluginName = "mozjpeg" | "pngquant" | "svgo" | "gifsicle";
 
 interface DefaultPluginsConfig {
   name: DefaultPluginName;
@@ -14,7 +13,7 @@ interface DefaultPluginsConfig {
 interface ImageminPluginOptions {
   plugins?: Array<(input: Buffer) => Promise<Buffer>>;
   defaultPluginsOptions?: {
-    jpegtran?: jpegtran.Options;
+    mozjpeg?: Record<string, unknown>;
     pngquant?: pngquantOptions;
     svgo?: Record<string, unknown>;
     gifsicle?: gifsicle.Options;
@@ -32,12 +31,13 @@ const imageminPlugin = ({
     build.onLoad({ filter: /\.(png|jpg|gif|svg)$/ }, async (args) => {
       const imagemin = (await import("imagemin")).default;
       const svgo = (await import("imagemin-svgo")).default;
+      const mozjpeg = (await import("imagemin-mozjpeg")).default;
 
       const defaultPluginsConfig: DefaultPluginsConfig[] = [
         {
-          name: "jpegtran",
+          name: "mozjpeg",
           extension: "jpg",
-          plugin: jpegtran(defaultPluginsOptions.jpegtran),
+          plugin: mozjpeg(defaultPluginsOptions.mozjpeg),
         },
         {
           name: "pngquant",
