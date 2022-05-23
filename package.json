@@ -1,0 +1,43 @@
+{
+  "name": "esbuild-plugin-imagemin",
+  "version": "0.0.1",
+  "description": "An esbuild plugin for minimizing images using imagemin",
+  "main": "./dist/index",
+  "types": "./dist/index.d.ts",
+  "browser": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "scripts": {
+    "build": "ts-node .build/esbuild.ts && tsc --emitDeclarationOnly --outDir dist",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omyasn/esbuild-plugin-imagemin.git"
+  },
+  "keywords": [
+    "esbuild",
+    "esbuild-plugin",
+    "image",
+    "imagemin"
+  ],
+  "author": "Olga Miasnikova",
+  "bugs": {
+    "url": "https://github.com/omyasn/esbuild-plugin-imagemin/issues"
+  },
+  "homepage": "https://github.com/omyasn/esbuild-plugin-imagemin#readme",
+  "dependencies": {
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1"
+  },
+  "devDependencies": {
+    "@types/imagemin-gifsicle": "^7.0.1",
+    "@types/imagemin-jpegtran": "^5.0.1",
+    "@types/imagemin-svgo": "^10.0.1",
+    "esbuild": "^0.14.39",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.6.4"
+  }
+}

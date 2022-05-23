@@ -1,2 +1,3 @@
 # esbuild-plugin-imagemin
-An esuild plugin for minimizing images using imagemin
+
+An esbuild plugin for minimizing images using imagemin

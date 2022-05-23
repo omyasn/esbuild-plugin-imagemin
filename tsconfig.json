@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "declaration": true,
+        "lib": [
+            "ES2020", "dom"
+        ],
+    },
+    "types": [
+        "node"
+    ],
+    "files": ["./index.ts"],
+    "exclude": [
+        "**/node_modules"
+    ]
+} 
